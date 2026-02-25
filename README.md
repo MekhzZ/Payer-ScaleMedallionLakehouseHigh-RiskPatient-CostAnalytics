@@ -16,6 +16,8 @@ The pipeline follows a modern **ELT (Extract, Load, Transform)** pattern to ensu
 
 - **Gold (Analytical Layer):** Flattened Patient 360 view aggregating spend across four claim types (Inpatient, Outpatient, Carrier, Pharmacy).
 
+![Architecture Diagram](./architecture.png)
+
 ## Technical Stack
 - **Platform:** Databricks (Community Edition)
 
