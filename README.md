@@ -10,7 +10,7 @@ The pipeline follows a modern **ELT (Extract, Load, Transform)** pattern to ensu
 
 - **Bronze (Raw Layer):** Automated ingestion of CMS ZIP/CSV files using COPY INTO. Includes metadata tagging (BEN_INSERTED_YEAR) for longitudinal tracking.
 
-- **Silver (Conformed Layer):** Security: SHA-256 Hashing of patient_id and provider_id for HIPAA-compliant de-identification.
+- **Silver (Conformed Layer):** Security: SHA-256 Hashing of patient_id and provider_id for HIPAA-compliant de-identification using SALT and safe-harbour method.
 
 - **Quality:** Schema enforcement, type casting, and deduplication using window functions.
 
@@ -25,7 +25,7 @@ The pipeline follows a modern **ELT (Extract, Load, Transform)** pattern to ensu
 
 - **Storage:** Delta Lake (Parquet-backed)
 
-- **Security:** SHA-256 Tokenization
+- **Security:** SHA-256 Tokenization with SALT method, Safe-Harbour method
 
 ## Key Features & Engineered Metrics
 - **is_diabetic_ckd_high_risk:** A boolean flag identifying the intersection of Diabetes and Chronic Kidney Disease.
