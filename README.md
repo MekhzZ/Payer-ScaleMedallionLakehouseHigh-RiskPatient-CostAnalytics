@@ -3,7 +3,18 @@
 ## Business Context & Objective
 Health plans face significant challenges in identifying **"high-risk, high-cost"** members due to fragmented data silos across Inpatient, Outpatient, and Pharmacy claims.
 
-This project implements a **Medallion Architecture** on Databricks to ingest raw **CMS DE SynPUF** datasets. The goal is to build a unified Gold **Patient 360** table that identifies **multi-chronic cohorts (Diabetes + CKD)** and calculates key metrics like **Total Cost of Care (TCOC)** and **Provider Fragmentation Index** to drive better care management decisions.
+We need to move from raw claims to a Gold Layer Table that identifies specific patients who are driving high costs due to a lack of care coordination.
+
+### The Target Population
+- The Cohort: Patients diagnosed with both Diabetes and Chronic Kidney Disease (CKD).
+- The Business Logic: These patients are at the highest risk for expensive ER visits and long hospital stays if their multiple doctors aren't communicating.
+
+### Key Metrics Required (The "Insights")
+The stakeholder needs four specific metrics for every patient in this group:
+- Total Cost of Care (TCOC): The sum of all payments made to hospitals (Inpatient) and doctors (Carrier).
+Provider Fragmentation Score: A count of unique Provider IDs associated with the patient. (High numbers = Higher risk of "lost" information).
+- Utilization Ratio: A comparison of Inpatient Spend vs. Carrier Spend. (Is the money going to preventive office visits or expensive emergency care?).
+- Chronic Severity Flag: A consolidated field that categorizes the patient's risk level based on their condition flags.
 
 ## Architecture & Data Flow (ELT)
 The pipeline follows a modern **ELT (Extract, Load, Transform)** pattern to ensure full data auditability:
