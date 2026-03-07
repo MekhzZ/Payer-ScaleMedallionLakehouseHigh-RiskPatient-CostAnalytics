@@ -29,7 +29,7 @@ Provider Fragmentation Score: A count of unique Provider IDs associated with the
 
 - ```docs/privacy-and-security-guide.pdf``` : HIPAA official guide from https://healthit.gov/privacy-security/hipaa-basics/hipaa-providers/
 
-- ```docs/SynPUF_DUG.pdf``` : CMS 2008-2010 Data Entrepreneurs’ Synthetic Public Use File (DE-SynPUF) - Data Users Document
+- ```docs/SynPUF_DUG.pdf``` : CMS 2008-2010 Data Entrepreneurs’ Synthetic Public Use File (DE-SynPUF) - [Data Users Document](https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/synpuf_dug.pdf)
 
 - ```notebooks/us_healthcare_notebook.ipynb``` : Notebook used in databricks to build and play with data.
 
@@ -48,7 +48,7 @@ Provider Fragmentation Score: A count of unique Provider IDs associated with the
 ## Architecture & Data Flow (ELT)
 The pipeline follows a modern **ELT (Extract, Load, Transform)** pattern to ensure full data auditability:
 
-- **Bronze (Raw Layer):** Automated ingestion of CMS ZIP/CSV files using COPY INTO. Includes metadata tagging (BEN_INSERTED_YEAR) for longitudinal tracking.
+- **Bronze (Raw Layer):** Automated ingestion of CMS ZIP/CSV files using COPY INTO. Includes metadata tagging (BENE_INSERTED_YEAR) for longitudinal tracking.
 
 - **Silver (Conformed Layer):** Security: SHA-256 Hashing of patient_id and provider_id for HIPAA-compliant de-identification using SALT and safe-harbour method.
 
